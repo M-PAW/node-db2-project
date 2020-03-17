@@ -1,6 +1,6 @@
 
 exports.up = function(knex) {
-  return knex.schema.table("cars", tbl => {
+  return knex.schema.createTable("cars", tbl => {
     tbl.increment();
 
     tbl
@@ -8,6 +8,8 @@ exports.up = function(knex) {
         .string('make').notNullable().index()
         .string('model').notNullable().index()
         .string('mileage').notNullable().index()
+        .string('transmission').notNullable().index()
+        .string('title').notNullable().index()
 
   });
 };
