@@ -4,7 +4,7 @@ exports.up = function(knex) {
     tbl.increment();
 
     tbl
-        .string('vin').notNullable().index()
+        .string('vin').notNullable().index().unique()
         .string('make').notNullable().index()
         .string('model').notNullable().index()
         .string('mileage').notNullable().index()
@@ -13,7 +13,5 @@ exports.up = function(knex) {
 };
 
 exports.down = function(knex) {
-  return knex.schema.table("vegetable", tbl => {
-      tbl.dropColumn()
-  })
+  return knex.schema.dropTableIfExists('cars')
 };
